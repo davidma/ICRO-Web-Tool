@@ -25,6 +25,7 @@
         }
         else
         {
+            $theLogger->log("User ".$_SESSION['username']." logged in");
             echo "<meta http-equiv=\"refresh\" content=\"0;index.php\">";
         }
 

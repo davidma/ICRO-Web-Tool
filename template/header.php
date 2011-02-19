@@ -5,10 +5,12 @@
  require_once("classes/Validator.php");
  require_once("classes/SMS.php");
  require_once("classes/Mapper.php");
+ require_once("classes/Logger.php");
 
  // These objects are now available for use on every page.... 
  $theSentry = new Sentry();
  $theDB = new DBLink();
+ $theLogger = new Logger($theDB);
  $theValidator = new Validator();
 
  echo '<html>';
