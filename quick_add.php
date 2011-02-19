@@ -76,6 +76,10 @@ if (isset($_POST['submit']))
                           {
                               if ($theDB->doQuery("insert into user_roles set user_id = ".$res[0]['user_id'].", role_id = 4"))
                               {
+                                  $theLogger->log("Created new user ".$username." using quick user add page");
+                                  $theLogger->log("User ".$username." assigned Status 0 (Available)");
+                                  $theLogger->log("User ".$username." assigned Role 4 (General Member)");
+
                                   echo 'User details added to the DB<br/>';
                                   echo '<br/>'; 
                                   echo 'Username: '.$username.'<br/>';

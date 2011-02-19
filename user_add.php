@@ -119,6 +119,11 @@ if (isset($_POST['submit']))
                           {
                               if ($theDB->doQuery("insert into user_roles set user_id = ".$res[0]['user_id'].", role_id = 4"))
                               {
+                                  $theLogger->log("Created new user ".$_POST['uname']." using full user add page"); 
+                                  $theLogger->log("User ".$_POST['uname']." assigned Status 0 (Available)");
+                                  $theLogger->log("User ".$_POST['uname']." assigned Role 4 (General Member)");
+
+
                                   echo 'User details added to the DB<br/><br/>'; 
                                   echo 'They can now <a href="login.php">login</a> to access the sites features.';
                               }

@@ -17,6 +17,18 @@
      {
          if (isset($_POST['user_id']))
          {
+              $res = $theDB->fetchQuery("select username from users where user_id = '".$_POST['user_id']."';");
+
+              if (!$res)
+              {
+                   echo "Invalid User id";
+                   die();
+              }
+              else
+              {
+                   $username = $res[0]['username'];
+              }
+
               // delete the entry associated with that name....
               $res = $theDB->doQuery("delete u,ur,us from users u, user_roles ur, user_status us where ur.user_id = u.user_id and us.user_id = u.user_id and u.user_id = '".$_POST['user_id']."';");
        
@@ -27,7 +39,9 @@
               }
               else
               {
-                  echo "Information for user <b><u>".$_POST['username2']."</u></b> deleted successfully;";
+                  $theLogger->log("Deleted user ".$username." and associated data");
+
+                  echo "Information for user <b><u>".$username."</u></b> deleted successfully;";
               }
                 
          }
