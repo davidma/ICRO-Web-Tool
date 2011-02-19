@@ -2,7 +2,7 @@ ICRO Web Tool - Dev Setup Guidelines
 ====================================
 
 1) Install Apache, Mysql, PHP
-2) Grab a copy of the repository, put it in /var/www/html/icro
+2) Grab a copy of the repository, put it in /var/www/html/icro (owned by apache user)
 3) Create a blank DB called 'icroweb'
 4) Use icro/data/icroweb.basic.sql to create the contents of this DB
 5) Point your web browser at http://your-ip/icro/

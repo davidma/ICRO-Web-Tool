@@ -68,7 +68,6 @@
          echo "<ul>";
          echo "<li><a href='gen_calloutlist.php'>Generate a Callout List</a></li>";
          echo "<li><a href='profile.php'>View</a> / <a href='edit_profile.php'>Edit</a> your Callout Information</a></li>";
-         echo "<li><a href='logbook_entry.php'>Add </a>an online logbook entry</a></li>";
          echo "</ul>";
          echo "</div>";
      }
@@ -80,6 +79,7 @@
          echo "<div class='fullbox' id='d'>";
          echo "<ul>";
          echo "<li><a href='dump_db.php'>Dump DB (for backup or offline use)</a><br/></li>";
+         echo "<li><a href='quick_add.php'>Quickly Add a Basic User</a><br/></li>";
          echo "<li><a href='user_add.php'>Add</a>&nbsp;/&nbsp;<a href='user_mod.php'>Modify</a>&nbsp;/&nbsp;<a href='user_del.php'>Delete</a> a User<br/></li>";
          echo "</ul>";
          echo "</div>";
