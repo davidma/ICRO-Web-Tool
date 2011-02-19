@@ -35,7 +35,7 @@ class Validator
     // Validate the input is text only - changed to deal with special characters (damn you database)
     function validateTextOnly($theinput,$description = '')
     {
-        $result = ereg ("^[A-Za-z0-9\()' ]+$", $theinput );
+        $result = ereg ("^[A-Za-z0-9\()' \.]+$", $theinput );
 
         if ($result)
         {

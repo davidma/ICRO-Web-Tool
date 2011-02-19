@@ -172,22 +172,22 @@ else
 <tr><td>Confirm E-Mail*:</td><td>
 <input type="text" name="email_again" maxlength="100">
 </td></tr>
-<tr><td>Address Line 1:*</td><td>
+<tr><td>Address Line 1*:</td><td>
 <input type="text" name="location1" maxlength="100">
 </td></tr>
-<tr><td>Address Line 2:*</td><td>
+<tr><td>Address Line 2:</td><td>
 <input type="text" name="location2" maxlength="100">
 </td></tr>
-<tr><td>Town:</td><td>
+<tr><td>Town*:</td><td>
 <input type="text" name="locationTown" maxlength="100">
 </td></tr>
-<tr><td>County:*</td><td>
+<tr><td>County*:</td><td>
 <input type="text" name="county" maxlength="100">
 </td></tr>
 <tr><td>Postcode:</td><td>
 <input type="text" name="postcode" maxlength="100">
 </td></tr>
-<tr><td>Mobile Contact Number:*</td><td>
+<tr><td>Mobile Contact Number*:</td><td>
 <input type="text" name="mobile" maxlength="100">
 </td></tr>
 <tr><td>Home Contact Number:</td><td>

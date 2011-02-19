@@ -67,7 +67,7 @@
          echo "<div class='fullbox' id='c'>";
          echo "<ul>";
          echo "<li><a href='gen_calloutlist.php'>Generate a Callout List</a></li>";
-         echo "<li><a href='profile.php'>View</a> / <a href='edit_profile.php'>Edit</a> your Callout Information</a></li>";
+         echo "<li><a href='profile.php'>View</a> / <a href='edit_profile.php?user_id=".$_SESSION['user_id']."'>Edit</a> your Callout Information</a></li>";
          echo "</ul>";
          echo "</div>";
      }
