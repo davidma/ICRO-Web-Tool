@@ -68,6 +68,7 @@
          echo "<ul>";
          echo "<li><a href='gen_calloutlist.php'>Generate a Callout List</a></li>";
          echo "<li><a href='profile.php'>View</a> / <a href='edit_profile.php?user_id=".$_SESSION['user_id']."'>Edit</a> your Callout Information</a></li>";
+         echo "<li><a href='change_password.php'>Change</a> your password</a></li>";
          echo "</ul>";
          echo "</div>";
      }
@@ -81,6 +82,8 @@
          echo "<li><a href='dump_db.php'>Dump DB (for backup or offline use)</a><br/></li>";
          echo "<li><a href='quick_add.php'>Quickly Add a Basic User</a><br/></li>";
          echo "<li><a href='user_add.php'>Add</a>&nbsp;/&nbsp;<a href='user_mod.php'>Modify</a>&nbsp;/&nbsp;<a href='user_del.php'>Delete</a> a User<br/></li>";
+         echo "<li><a href='reset_password.php'>Reset</a> a users password</a></li>";
+         echo "<li><a href='user_roles.php'>Change</a> a users roles</a></li>";
          echo "</ul>";
          echo "</div>";
      }

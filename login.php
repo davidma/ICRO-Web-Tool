@@ -19,10 +19,6 @@
     }
     else
     {
-        echo $_POST['uname'];
-        echo $_POST['passwd'];
-        echo sha1($_POST['passwd']);
-
         if (!$theSentry->login($_POST['uname'],sha1($_POST['passwd'])))
         {
             print 'Login error - <a href="login.php">try again?</a>';
@@ -32,8 +28,6 @@
             $theLogger->log("User ".$_SESSION['username']." logged in");
             echo "<meta http-equiv=\"refresh\" content=\"0;index.php\">";
         }
-
-
     }
  } 
  else 

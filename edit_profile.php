@@ -57,6 +57,7 @@
                  }
                  else
                  {
+                     $theLogger->log("Modified profile for ".$_POST['fname']." ".$_POST['lname']);
                      echo '<br/>User details successfully updated in DB<br/><br/>';
                  }
              }
