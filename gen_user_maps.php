@@ -30,6 +30,25 @@
              file_put_contents("images/usermaps/".$result[$i]['user_id'].".png",$data);
 
              echo "Generated new map for ".$result[$i]['username']."<br/>";
+
+             $url = "http://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($address)."&region=ie&sensor=false";
+
+             $data = json_decode(file_get_contents($url));
+             $lat  = $data->results[0]->geometry->location->lat;
+             $lng  = $data->results[0]->geometry->location->lng;
+           
+             $res = $theDB->doQuery("update users set lat = '$lat', lng = '$lng' where user_id = '".$result[$i]['user_id']."'");
+
+             if ($res)
+             {
+                 echo "Calculated new Lat/Long for ".$result[$i]['username']." - $lat,$lng - DB updated<br/>";
+             }
+             else
+             {
+                 echo "Calculated new Lat/Long for ".$result[$i]['username']." - $lat,$lng - DB not updated<br/>";
+             }
+
+             sleep(1);
          }
      }
  }
