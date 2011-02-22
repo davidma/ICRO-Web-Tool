@@ -34,7 +34,8 @@
          $address = preg_replace('/, $/','',$address);
          $address = preg_replace('/^, /','',$address);
 
-         echo "<div class='rmenubox'>Map goes here</div>";
+
+         echo "<div class='rmenubox'><img src='images/usermaps/".$result[0]['user_id'].".png'></div>";
      
          // General info
          echo "<div class='halfboxheader'><b>Username</b></div><div class='halfbox'>".$result[0]['username']."</div>";

@@ -84,6 +84,7 @@
          echo "<li><a href='user_add.php'>Add</a>&nbsp;/&nbsp;<a href='user_mod.php'>Modify</a>&nbsp;/&nbsp;<a href='user_del.php'>Delete</a> a User<br/></li>";
          echo "<li><a href='reset_password.php'>Reset</a> a users password</a></li>";
          echo "<li><a href='user_roles.php'>Change</a> a users roles</a></li>";
+         echo "<li><a href='gen_user_maps.php'>Re-generate</a> all users maps, lats and longs</a></li>";
          echo "</ul>";
          echo "</div>";
      }
