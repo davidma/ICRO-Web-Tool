@@ -18,6 +18,9 @@
  echo '<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">';
  echo '<LINK rel="stylesheet" type="text/css" href="css/default.css">';
 
+ // The ICRO Ajax Library
+ echo "<script type='text/javascript' src='scripts/icro_ajax.js'></script>";
+
  echo '</head><body><div class="mainframe">';
  echo "<div class='dateheader'>".date('l jS \of F Y')."</div>";
  echo "<div class='maintitle'><br/></div>";

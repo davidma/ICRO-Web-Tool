@@ -43,8 +43,8 @@
          echo "<div class='fullboxheader'><a href='#' id='ax' onclick=\"toggleDiv('a','ax');\"/>[-]</a> <b>Warden Tools</b></div>";
          echo "<div class='fullbox' id='a'>";
          echo "<ul>";
-         echo "<li><a href='callout.php'>Start a Callout</a></li>";
-         echo "<li><a href='send_sms.php'>Send Non-Callout Group SMS Messages</a></li>";
+         ///echo "<li><a href='callout.php'>Start a Callout</a></li>";
+         ///echo "<li><a href='send_sms.php'>Send Non-Callout Group SMS Messages</a></li>";
          echo "</ul>";
          echo "</div>";
      }
@@ -55,7 +55,7 @@
          echo "<div class='fullboxheader'><a href='#' id='bx' onclick=\"toggleDiv('b','bx');\"/>[-]</a> <b>Core Team Tools</b></div>";
          echo "<div class='fullbox' id='b'>";
          echo "<ul>";
-         echo "<li><a href='file_search.php'>Search</a> / <a href='file_upload_form.php'>Upload</a> Files</a></li>";
+         /// echo "<li><a href='file_search.php'>Search</a> / <a href='file_upload_form.php'>Upload</a> Files</a></li>";
          echo "</ul>";
          echo "</div>";
      }
@@ -67,6 +67,7 @@
          echo "<div class='fullbox' id='c'>";
          echo "<ul>";
          echo "<li><a href='gen_calloutlist.php'>Generate a Callout List</a></li>";
+         echo "<li><a href='cave_list.php'>View</a> Cave Files</li>";
          echo "<li><a href='profile.php'>View</a> / <a href='edit_profile.php?user_id=".$_SESSION['user_id']."'>Edit</a> your Callout Information</a></li>";
          echo "<li><a href='change_password.php'>Change</a> your password</a></li>";
          echo "</ul>";
