@@ -55,7 +55,8 @@
          echo "<div class='fullboxheader'><a href='#' id='bx' onclick=\"toggleDiv('b','bx');\"/>[-]</a> <b>Core Team Tools</b></div>";
          echo "<div class='fullbox' id='b'>";
          echo "<ul>";
-         /// echo "<li><a href='file_search.php'>Search</a> / <a href='file_upload_form.php'>Upload</a> Files</a></li>";
+         echo "<li><a href='list_documents.php'>Browse</a> / <a href='upload_document.php'>Upload</a> Documents</a></li>";
+         echo "<li><a href='cave_mod.php'>Modify</a> Cave Files</li>";
          echo "</ul>";
          echo "</div>";
      }
