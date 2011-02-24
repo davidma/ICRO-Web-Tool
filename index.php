@@ -38,13 +38,14 @@
      // Only exceptions are admins - they see everything by default
 
      // Wardens
-     if ($theSentry->hasPermission(2))
+     if ($theSentry->hasPermission(2) || $theSentry->hasPermission(8))
      {
-         echo "<div class='fullboxheader'><a href='#' id='ax' onclick=\"toggleDiv('a','ax');\"/>[-]</a> <b>Warden Tools</b></div>";
+         echo "<div class='fullboxheader'><a href='#' id='ax' onclick=\"toggleDiv('a','ax');\"/>[-]</a> <b>Callout Tools</b></div>";
          echo "<div class='fullbox' id='a'>";
          echo "<ul>";
          ///echo "<li><a href='callout.php'>Start a Callout</a></li>";
          ///echo "<li><a href='send_sms.php'>Send Non-Callout Group SMS Messages</a></li>";
+         echo "<li><a href='cave_add.php'>Create a new Cave File</a></li>";
          echo "</ul>";
          echo "</div>";
      }
