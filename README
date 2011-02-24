@@ -14,6 +14,7 @@ make several changes, not limited to:
   * move the config outside the webroot
   * update the classes files to point at new config path
   * replace default user with actual users/passwords
+  * allow mysql to take packets of up to 16M
 
 Thats about it,
 

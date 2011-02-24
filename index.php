@@ -56,6 +56,7 @@
          echo "<div class='fullbox' id='b'>";
          echo "<ul>";
          echo "<li><a href='list_documents.php'>Browse</a> / <a href='upload_document.php'>Upload</a> Documents</a></li>";
+         echo "<li><a href='link_cave_docs.php'>Link</a> Documents to Cave files</a></li>";
          echo "<li><a href='cave_mod.php'>Modify</a> Cave Files</li>";
          echo "</ul>";
          echo "</div>";

@@ -9,7 +9,7 @@
 <?php
  if ($theSentry->login())
  {
-     $result = $theDB->fetchQuery("select * from caves limit 10");
+     $result = $theDB->fetchQuery("select * from caves");
 
      if(!$result)
      {

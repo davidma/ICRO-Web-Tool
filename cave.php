@@ -34,7 +34,35 @@
              echo "<div class='fullbox'>".$result[0]['description']."</div>";
              
              echo "<div class='fullboxheader'><b>Linked Documents</b></div>";
-             echo "<div class='fullbox'>Doc list will go here</div>";
+             echo "<div class='fullbox'>";
+
+             $result = $theDB->fetchQuery("select d.doc_id,d.name,d.title,d.type,d.size from documents d, cave_docs cd where cd.cave_id = ".$result[0]['cave_id']." and cd.doc_id = d.doc_id order by doc_id");
+
+             if(!$result)
+             {
+                 echo "No linked documents";
+             }
+             else
+             {
+                 echo '<center><table border=1 width=95%>';
+                 echo '<tr bgcolor=grey>';
+                 echo '<td width=40%>Title</td><td width=20%>Filename</td><td width=20%>Type</td><td width=20%>Size</td>';
+                 echo '</tr>';
+
+                 for ($i=0; $i < count($result); $i++)
+                 {
+                     echo '<tr>';
+                     echo '<td width=40%><a href="get_document.php?doc_id='.$result[$i]['doc_id'].'">'.$result[$i]['title'].'</a></td>';
+                     echo '<td width=20%>'.$result[$i]['name'].'</td>';
+                     echo '<td width=20%>'.$result[$i]['type'].'</td>';
+                     echo '<td width=20%>'.$result[$i]['size'].'</td>';
+                     echo '</tr>';
+
+                 }
+                 echo '</table></center>';
+             }
+
+             echo "</div>";
 
          }
      }
