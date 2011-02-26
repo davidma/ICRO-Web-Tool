@@ -24,13 +24,12 @@
              else
              {
                  $_POST['location1'] = strip_tags($_POST['location1']);
-                 $_POST['location1'] = strip_tags($_POST['location2']);
+                 $_POST['location2'] = strip_tags($_POST['location2']);
 
 
                  if (!get_magic_quotes_gpc())
                  {
                      $_POST['email'] = addslashes($_POST['email']);
-                     $_POST['location'] = addslashes($_POST['location']);
                  }
 
 
