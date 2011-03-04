@@ -60,7 +60,6 @@
                if ($theSMS->send($data[$i]['mobile_phone'],$message))
                {   
                  $theDB->doQuery("UPDATE user_status SET status_id = ".$state.", rescue_id=".$ID[0]['rescue_id']." where user_id=".$data[$i]['user_id'].";");
-                 echo "UPDATE user_status SET status_id = ".$state.", rescue_id=".$ID[0]['rescue_id']." where user_id=".$data[$i]['user_id'].";";
                  $theDB->doQuery("INSERT into rescue_log set rescue_id = ".$ID[0]['rescue_id'].",TIME=now(),MESSAGE='".$data[$i]['first_name']." ".$data[$i]['last_name']." changed to state $state ($status)'");
                  echo $data[$i]['first_name']." ".$data[$i]['last_name']." changed to state $state ($status) - SMS sent!<br/>";
                }

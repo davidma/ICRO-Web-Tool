@@ -94,6 +94,7 @@
          echo "<ul>";
          echo "<li><a href='gen_calloutlist.php'>Generate a Callout List</a></li>";
          echo "<li><a href='cave_list.php'>View</a> Cave Files</li>";
+         echo "<li><a href='callout_archive.php'>View</a> old callouts</li>";
          echo "<li><a href='profile.php'>View</a> / <a href='edit_profile.php?user_id=".$_SESSION['user_id']."'>Edit</a> your Callout Information</a></li>";
          echo "<li><a href='change_password.php'>Change</a> your password</a></li>";
          echo "</ul>";

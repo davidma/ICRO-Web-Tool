@@ -84,6 +84,12 @@
      echo "<li><a href='modify_details.php?id=".$_GET['id']."'>Modify main callout details</a></li>";
      echo "<li><a href='rescue_log.php?id=".$_GET['id']."'>View / Update the main rescue log</a></li>";
      echo "<li><a href='cave.php?cave_id=".$rescue[0]['cave_id']."'>Get more information about the Cave</a></li>";
+
+     if ($rescue[0]['status'] == 1)
+     {
+         echo "<li><a href='end_rescue.php?id=".$_GET['id']."'>End the rescue</a></li>";
+     }
+
      echo "</ul>";
      echo "</div>";
      echo "<br/>";
@@ -92,7 +98,7 @@
      echo "<div class='fullbox' id='mgt'>";
      echo "<ul>";
      echo "<li><a href='show_cavers.php?id=".$_GET['id']."'>View the list of cavers involved in this rescue</a></li>";
-     echo "<li><a href='target_search.php?LAT=".$rescue[0]['CAVE_GPS_LAT']."&LNG=".$rescue[0]['CAVE_GPS_LONG']."&CAVE=".urlencode($rescue[0]['CAVE_NAME'])."&RID=".$_GET['id']."'>Find ICRO Members to assist in this callout</a>";
+     echo "<li><a href='target_search.php?RID=".$_GET['id']."'>Find ICRO Members to assist in this callout</a>";
      echo "</ul>";
      echo "</div>";
 

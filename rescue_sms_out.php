@@ -36,11 +36,11 @@
 
                 if ($_GET['state'] == 4)
                 {
-                    $theDB->doQuery("insert into rescue_log set rescue_id=".$_GET['rescue_id'].",time=now(),message='".$data[0]['first_name']." ".$data[0]['last_name']." called out';");
+                    $theDB->doQuery("insert into rescue_log set rescue_id=".$_GET['rescue_id'].",time=now(),message='".$data[0]['first_name']." ".$data[0]['last_name']." callout requested';");
                 }
                 if ($_GET['state'] == 2)
                 {
-                    $theDB->doQuery("insert into rescue_log set rescue_id=".$_GET['rescue_id'].",time=now(),message='".$data[0]['first_name']." ".$data[0]['last_name']." put on standby';");
+                    $theDB->doQuery("insert into rescue_log set rescue_id=".$_GET['rescue_id'].",time=now(),message='".$data[0]['first_name']." ".$data[0]['last_name']." standby requested';");
                 }
             }
         }

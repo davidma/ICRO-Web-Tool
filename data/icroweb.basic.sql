@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.1.52, for redhat-linux-gnu (i386)
+-- MySQL dump 10.11
 --
 -- Host: localhost    Database: icroweb
 -- ------------------------------------------------------
--- Server version	5.1.52
+-- Server version	5.0.77
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,22 +16,46 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `cave_docs`
+--
+
+DROP TABLE IF EXISTS `cave_docs`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `cave_docs` (
+  `cave_id` int(11) NOT NULL default '0',
+  `doc_id` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`cave_id`,`doc_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `cave_docs`
+--
+
+LOCK TABLES `cave_docs` WRITE;
+/*!40000 ALTER TABLE `cave_docs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cave_docs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `caves`
 --
 
 DROP TABLE IF EXISTS `caves`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
 CREATE TABLE `caves` (
-  `cave_id` int(11) NOT NULL AUTO_INCREMENT,
+  `cave_id` int(11) NOT NULL auto_increment,
   `name` varchar(45) NOT NULL,
-  `county` varchar(20) DEFAULT NULL,
-  `lat` double DEFAULT NULL,
-  `lng` double DEFAULT NULL,
-  `description` varchar(500) DEFAULT NULL,
-  PRIMARY KEY (`cave_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `county` varchar(20) default NULL,
+  `lat` double default NULL,
+  `lng` double default NULL,
+  `description` text,
+  `enabled` tinyint(1) default '0',
+  PRIMARY KEY  (`cave_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2484 DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Dumping data for table `caves`
@@ -47,13 +71,13 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `counties`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
 CREATE TABLE `counties` (
-  `name` varchar(30) DEFAULT NULL,
-  `region_id` int(11) DEFAULT NULL
+  `name` varchar(30) default NULL,
+  `region_id` int(11) default NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Dumping data for table `counties`
@@ -70,18 +94,18 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `documents`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
 CREATE TABLE `documents` (
-  `doc_id` int(11) NOT NULL AUTO_INCREMENT,
+  `doc_id` int(11) NOT NULL auto_increment,
   `title` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
   `type` varchar(30) NOT NULL,
   `size` int(11) NOT NULL,
   `content` mediumblob NOT NULL,
-  PRIMARY KEY (`doc_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  PRIMARY KEY  (`doc_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Dumping data for table `documents`
@@ -97,14 +121,14 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `regions`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
 CREATE TABLE `regions` (
   `region_id` int(11) NOT NULL,
-  `region` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`region_id`)
+  `region` varchar(20) default NULL,
+  PRIMARY KEY  (`region_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Dumping data for table `regions`
@@ -117,18 +141,71 @@ INSERT INTO `regions` VALUES (0,'No Region Defined'),(1,'Northern Region'),(2,'S
 UNLOCK TABLES;
 
 --
+-- Table structure for table `rescue_log`
+--
+
+DROP TABLE IF EXISTS `rescue_log`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `rescue_log` (
+  `rescue_log_id` int(11) NOT NULL auto_increment,
+  `rescue_id` int(11) NOT NULL,
+  `time` datetime NOT NULL,
+  `message` varchar(500) NOT NULL,
+  PRIMARY KEY  (`rescue_log_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `rescue_log`
+--
+
+LOCK TABLES `rescue_log` WRITE;
+/*!40000 ALTER TABLE `rescue_log` DISABLE KEYS */;
+/*!40000 ALTER TABLE `rescue_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `rescues`
+--
+
+DROP TABLE IF EXISTS `rescues`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `rescues` (
+  `rescue_id` int(11) NOT NULL auto_increment,
+  `cave_id` int(11) default NULL,
+  `user_id` int(11) default NULL,
+  `date` datetime default NULL,
+  `status` int(3) default NULL,
+  `comments` longtext,
+  `type` int(3) default NULL,
+  PRIMARY KEY  (`rescue_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `rescues`
+--
+
+LOCK TABLES `rescues` WRITE;
+/*!40000 ALTER TABLE `rescues` DISABLE KEYS */;
+/*!40000 ALTER TABLE `rescues` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `roles`
 --
 
 DROP TABLE IF EXISTS `roles`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
 CREATE TABLE `roles` (
-  `role_id` int(11) NOT NULL AUTO_INCREMENT,
-  `role` varchar(45) NOT NULL DEFAULT '',
-  PRIMARY KEY (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `role_id` int(11) NOT NULL auto_increment,
+  `role` varchar(45) NOT NULL default '',
+  PRIMARY KEY  (`role_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Dumping data for table `roles`
@@ -136,7 +213,7 @@ CREATE TABLE `roles` (
 
 LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` VALUES (1,'Site Administrator'),(2,'Warden'),(3,'Core Team Member'),(4,'General Member'),(5,'Training Officer'),(6,'Equipment Officer'),(7,'First Aid Officer'),(8,'Callout Officer'),(9,'Public Relations Officer'),(10,'Reserve Warden'),(12,'Advanced Rigging'),(13,'Stretcher'),(14,'1/2 Day Media Training'),(15,'Shoring/Rockbreaking'),(16,'Medic'),(17,'Doctor'),(18,'Command Physician'),(19,'First Aid'),(20,'Basic Rigging'),(21,'Drug Administrator'),(22,'Communications'),(23,'Incident Management'),(24,'SSF Rigging'),(25,'CIC'),(26,'Full Day Media Training');
+INSERT INTO `roles` VALUES (1,'Site Administrator'),(2,'Warden'),(3,'Core Team Member'),(4,'General Member'),(5,'Training Officer'),(6,'Equipment Officer'),(7,'First Aid Officer'),(8,'Callout Officer'),(9,'Public Relations Officer'),(10,'Reserve Warden'),(101,'Advanced Rigging'),(102,'Stretcher'),(103,'1/2 Day Media Training'),(104,'Shoring/Rockbreaking'),(105,'Medic'),(106,'Doctor'),(107,'Command Physician'),(108,'First Aid'),(109,'Basic Rigging'),(110,'Drug Administrator'),(111,'Communications'),(112,'Incident Management'),(113,'SSF Rigging'),(114,'CIC'),(115,'Full Day Media Training');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,14 +222,14 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `status`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
 CREATE TABLE `status` (
-  `status_id` tinyint(4) NOT NULL DEFAULT '0',
-  `status` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`status_id`)
+  `status_id` tinyint(4) NOT NULL default '0',
+  `status` varchar(20) default NULL,
+  PRIMARY KEY  (`status_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Dumping data for table `status`
@@ -165,18 +242,44 @@ INSERT INTO `status` VALUES (0,'Available'),(1,'Not Available'),(2,'Standby requ
 UNLOCK TABLES;
 
 --
+-- Table structure for table `system_log`
+--
+
+DROP TABLE IF EXISTS `system_log`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `system_log` (
+  `log_id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) NOT NULL,
+  `time` datetime NOT NULL,
+  `message` varchar(500) NOT NULL,
+  PRIMARY KEY  (`log_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=214 DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `system_log`
+--
+
+LOCK TABLES `system_log` WRITE;
+/*!40000 ALTER TABLE `system_log` DISABLE KEYS */;
+INSERT INTO `system_log` VALUES (213,2,'2011-03-04 18:37:03','User admin logged in');
+/*!40000 ALTER TABLE `system_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user_roles`
 --
 
 DROP TABLE IF EXISTS `user_roles`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
 CREATE TABLE `user_roles` (
-  `user_id` int(11) NOT NULL DEFAULT '0',
-  `role_id` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`user_id`,`role_id`)
+  `user_id` int(11) NOT NULL default '0',
+  `role_id` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`user_id`,`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Dumping data for table `user_roles`
@@ -193,17 +296,17 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `user_status`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
 CREATE TABLE `user_status` (
-  `user_id` int(11) NOT NULL DEFAULT '0',
-  `status_id` tinyint(4) DEFAULT '0',
-  `rescue_id` int(11) NOT NULL DEFAULT '0',
-  `team_id` int(11) NOT NULL DEFAULT '0',
-  `eta` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`user_id`)
+  `user_id` int(11) NOT NULL default '0',
+  `status_id` tinyint(4) default '0',
+  `rescue_id` int(11) NOT NULL default '0',
+  `team_id` int(11) NOT NULL default '0',
+  `eta` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Dumping data for table `user_status`
@@ -211,6 +314,7 @@ CREATE TABLE `user_status` (
 
 LOCK TABLES `user_status` WRITE;
 /*!40000 ALTER TABLE `user_status` DISABLE KEYS */;
+INSERT INTO `user_status` VALUES (2,0,0,0,0);
 /*!40000 ALTER TABLE `user_status` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -219,34 +323,34 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
 CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL auto_increment,
   `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
-  `home_phone` varchar(20) DEFAULT NULL,
-  `mobile_phone` varchar(20) DEFAULT NULL,
-  `work_phone` varchar(20) DEFAULT NULL,
-  `other_phone` varchar(20) DEFAULT NULL,
-  `address_line1` varchar(45) DEFAULT NULL,
-  `address_line2` varchar(45) DEFAULT NULL,
-  `town` varchar(45) DEFAULT NULL,
-  `county` varchar(45) DEFAULT NULL,
-  `postcode` varchar(10) DEFAULT NULL,
+  `home_phone` varchar(20) default NULL,
+  `mobile_phone` varchar(20) default NULL,
+  `work_phone` varchar(20) default NULL,
+  `other_phone` varchar(20) default NULL,
+  `address_line1` varchar(45) default NULL,
+  `address_line2` varchar(45) default NULL,
+  `town` varchar(45) default NULL,
+  `county` varchar(45) default NULL,
+  `postcode` varchar(10) default NULL,
   `email` varchar(45) NOT NULL,
   `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
-  `regdate` datetime DEFAULT NULL,
-  `last_login` datetime DEFAULT NULL,
-  `active` int(2) DEFAULT NULL,
-  `lat` float DEFAULT NULL,
-  `lng` float DEFAULT NULL,
-  `ffs_num` varchar(15) DEFAULT NULL,
-  PRIMARY KEY (`user_id`),
+  `regdate` datetime default NULL,
+  `last_login` datetime default NULL,
+  `active` int(2) default NULL,
+  `lat` float default NULL,
+  `lng` float default NULL,
+  `ffs_num` varchar(15) default NULL,
+  PRIMARY KEY  (`user_id`),
   UNIQUE KEY `K_USERNAME` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Dumping data for table `users`
@@ -254,7 +358,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (2,'System','Administrator','','1234','','','','','No Town','No County','','no-reply@icro.ie','admin','d033e22ae348aeb5660fc2140aec35850c4da997',NULL,'2011-02-23 11:54:14',1,NULL,NULL,'');
+INSERT INTO `users` VALUES (2,'System','Administrator','','1234','','','','','No Town','No County','','no-reply@icro.ie','admin','d033e22ae348aeb5660fc2140aec35850c4da997',NULL,'2011-03-04 18:37:14',1,NULL,NULL,'');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -267,4 +371,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-02-23 11:55:22
+-- Dump completed on 2011-03-04 18:37:35
