@@ -37,3 +37,13 @@ function formatText(area,tag)
         tarea.value = tarea.value.substring(0,start) + replace + tarea.value.substring(end,len); 
     }
 }
+
+// used in the sms messages that change state (callout,standby,etc...)
+function updateFields(nVal)
+{
+    if (nVal == ""){return}
+    var nForm = document.forms[0];
+    var info = nVal.split("%")
+    nForm['state'].value = info[0];
+    nForm['text'].value = info[1];
+}

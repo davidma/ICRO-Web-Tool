@@ -12,6 +12,7 @@
  $theDB = new DBLink();
  $theLogger = new Logger($theDB);
  $theValidator = new Validator();
+ $theSMS = new SMS();
 
  echo '<html>';
  echo '<head><title>ICRO - Irish Cave Rescue Organisation</title>';

@@ -52,7 +52,6 @@
                  }
                  else
                  {
-                     echo $update."<br/><br/>";
                      $theLogger->log("Created new cave file for ".$_POST['name']);
                      echo '<br/>Cave details successfully updated<br/><br/>';
                  }

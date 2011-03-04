@@ -33,6 +33,29 @@
      echo "<div class='newstitle'>Welcome!</div>";
      echo "<div class='newscontent'>";
 
+     // Callout banner - displays if there are active rescues ongoing (according to the DB)
+     $rescues = $theDB->fetchQuery('select c.name,c.county,r.rescue_id,r.type from rescues r, caves c where c.cave_id = r.cave_id and r.status = 1;');
+
+     if ($rescues)
+     {
+         echo "<div class='rescuebanner'>";
+         echo "<b>ATTENTION</b> - ".count($rescues)." Rescue(s) are currently ongoing: <ul>";
+
+         for ($i=0; $i < count($rescues); $i++)
+         {
+             if ($rescues[$i]['type'] == '1')
+             {
+                 echo "<li>Callout at " . $rescues[$i]['name'] .", ".$rescues[$i]['county']." - view <a href='view_callout.php?id=".$rescues[$i]['rescue_id']."'>Incident Page?</a>";
+             }
+             else
+             {
+                 echo "<li>Rescue PRACTICE at " . $rescues[$i]['name'] .", ".$rescues[$i]['county']." - view <a href='view_callout.php?id=".$rescues[$i]['rescue_id']."'>Incident Page?</a>";
+             }
+         }
+
+         echo "</ul></div>";
+     }
+
      // Menus are displayed according to the users permissions
      // The numbers below correspond to role_ids in the DB
      // Only exceptions are admins - they see everything by default
@@ -43,7 +66,7 @@
          echo "<div class='fullboxheader'><a href='#' id='ax' onclick=\"toggleDiv('a','ax');\"/>[-]</a> <b>Callout Tools</b></div>";
          echo "<div class='fullbox' id='a'>";
          echo "<ul>";
-         ///echo "<li><a href='callout.php'>Start a Callout</a></li>";
+         echo "<li><a href='callout.php'>Start a Callout</a></li>";
          ///echo "<li><a href='send_sms.php'>Send Non-Callout Group SMS Messages</a></li>";
          echo "<li><a href='cave_add.php'>Create a new Cave File</a></li>";
          echo "</ul>";
