@@ -58,7 +58,7 @@
 
              echo "Select a Cave:<br/><br/>";
 
-             $res = $theDB->fetchQuery("select cave_id,name,county from caves;");
+             $res = $theDB->fetchQuery("select cave_id,name,county from caves where enabled = '1' order by county,name;");
 
              if (!$res)
              {

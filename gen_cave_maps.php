@@ -9,7 +9,7 @@
 <?php
  if ($theSentry->login())
  {
-     $result = $theDB->fetchQuery("select * from caves");
+     $result = $theDB->fetchQuery("select * from caves where enabled = '1'");
 
      if(!$result)
      {

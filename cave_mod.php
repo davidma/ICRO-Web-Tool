@@ -18,7 +18,7 @@
              echo "Select a Cave to modify:<br/><br/>";
              echo "<form action='edit_cave.php' method='get'>";
 
-             $res = $theDB->fetchQuery("select cave_id,name,county from caves;");
+             $res = $theDB->fetchQuery("select cave_id,name,county from caves where enabled = '1' order by county,name;");
 
              if (!$res)
              {

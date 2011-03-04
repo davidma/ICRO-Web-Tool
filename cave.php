@@ -30,8 +30,28 @@
              echo "<div class='halfboxheader'><b>Longitude</b></div><div class='halfbox'>".$result[0]['lng']."</div>";
              echo "<div id='clear_both' style='clear:both;'></div>";
 
+             echo "<br/>";
+
              echo "<div class='fullboxheader'><b>Description</b></div>";
-             echo "<div class='fullbox'>".$result[0]['description']."</div>";
+
+             ## Allow some forum-style tags 
+             $description = $result[0]['description'];
+
+             $description = str_replace("\n",'<br/>',$description);
+             $description = str_replace('[b]','<b>',$description);
+             $description = str_replace('[/b]','</b>',$description);
+             $description = str_replace('[u]','<u>',$description);
+             $description = str_replace('[/u]','</u>',$description);
+             $description = str_replace('[red]','<font color="red">',$description);
+             $description = str_replace('[/red]','</font>',$description);
+             $description = str_replace('[green]','<font color="green">',$description);
+             $description = str_replace('[/green]','</font>',$description);
+             $description = str_replace('[blue]','<font color="blue">',$description);
+             $description = str_replace('[/blue]','</font>',$description);
+
+             echo "<div class='fullbox'>".$description."</div>";
+
+             echo "<br/>";
              
              echo "<div class='fullboxheader'><b>Linked Documents</b></div>";
              echo "<div class='fullbox'>";

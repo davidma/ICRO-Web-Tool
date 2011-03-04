@@ -36,7 +36,6 @@
                      $_POST['description'] = addslashes($_POST['description']);
                  }
 
-
                  $update = "update caves set name = '".$_POST['name']."',
                                            county = '".$_POST['county']."',
                                               lat = '".$_POST['lat']."',
@@ -73,21 +72,29 @@
              {
                  echo "<form action=\"edit_cave.php\" method=\"post\">";
                  echo "<table align=\"center\" border=\"1\" cellspacing=\"0\" cellpadding=\"3\">";
-                 echo "<tr><td>Name*:</td><td>";
+                 echo "<tr><td><b>Name*:</b></td><td>";
                  echo "<input type=\"hidden\" name=\"cave_id\" value='".$_GET['cave_id']."'>";
                  echo "<input type=\"text\" name=\"name\" value='".$res[0]['name']."' maxlength=\"50\">";
                  echo "</td></tr>";
-                 echo "<tr><td>County*:</td><td>";
+                 echo "<tr><td><b>County*:</b></td><td>";
                  echo "<input type=\"text\" name=\"county\" value='".$res[0]['county']."' maxlength=\"50\">";
                  echo "</td></tr>";
-                 echo "<tr><td>Latitude:</td><td>";
+                 echo "<tr><td><b>Latitude:</b></td><td>";
                  echo "<input type=\"text\" name=\"lat\" value='".$res[0]['lat']."' maxlength=\"50\">";
                  echo "</td></tr>";
-                 echo "<tr><td>Longitude:</td><td>";
+                 echo "<tr><td><b>Longitude:</b></td><td>";
                  echo "<input type=\"text\" name=\"lng\" value='".$res[0]['lng']."' maxlength=\"50\">";
                  echo "</td></tr>";
-                 echo "<tr><td>Description:</td><td>";
-                 echo "<textarea name=\"description\" cols=80 rows=20>".$res[0]['description']."</textarea>";
+                 echo "<tr><td colspan=2><b>Description</b>:</td></tr>";
+                 echo "<tr><td colspan=2>";
+                 echo "<input type='button' value='Bold' onclick='formatText(\"ta1\",\"b\");'/>";
+                 echo "<input type='button' value='Underline' onclick='formatText(\"ta1\",\"u\");'/>";
+                 echo "<input type='button' value='Italic' onclick='formatText(\"ta1\",\"i\");'/>";
+                 echo "<input type='button' value='Red' onclick='formatText(\"ta1\",\"red\");'/>";
+                 echo "<input type='button' value='Green' onclick='formatText(\"ta1\",\"green\");'/>";
+                 echo "<input type='button' value='Blue' onclick='formatText(\"ta1\",\"blue\");'/>";
+                 echo "</td></tr><tr><td colspan=2>";
+                 echo "<textarea id='ta1' name=\"description\" cols=80 rows=20>".$res[0]['description']."</textarea>";
                  echo "</td></tr>";
                  echo "<tr><td colspan=\"2\" align=\"right\">";
                  echo "<input type=\"submit\" name=\"do_modify\" value=\"Modify Cave\">";

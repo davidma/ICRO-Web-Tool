@@ -41,6 +41,7 @@
                                                 county = '".$_POST['county']."',
                                                    lat = '".$_POST['lat']."',
                                                    lng = '".$_POST['lng']."',
+                                               enabled = '1',
                                            description = '".$_POST['description']."'";
 
                  $result = $theDB->doQuery($update);
@@ -74,8 +75,16 @@
                  echo "<tr><td>Longitude:</td><td>";
                  echo "<input type=\"text\" name=\"lng\" maxlength=\"50\">";
                  echo "</td></tr>";
-                 echo "<tr><td>Description:</td><td>";
-                 echo "<textarea name=\"description\" cols=80 rows=20>Description goes here</textarea>";
+                 echo "<tr><td colspan=2><b>Description</b>:</td></tr>";
+                 echo "<tr><td colspan=2>";
+                 echo "<input type='button' value='Bold' onclick='formatText(\"ta1\",\"b\");'/>";
+                 echo "<input type='button' value='Underline' onclick='formatText(\"ta1\",\"u\");'/>";
+                 echo "<input type='button' value='Italic' onclick='formatText(\"ta1\",\"i\");'/>";
+                 echo "<input type='button' value='Red' onclick='formatText(\"ta1\",\"red\");'/>";
+                 echo "<input type='button' value='Green' onclick='formatText(\"ta1\",\"green\");'/>";
+                 echo "<input type='button' value='Blue' onclick='formatText(\"ta1\",\"blue\");'/>";
+                 echo "</td></tr><tr><td colspan=2>";
+                 echo "<textarea id='ta1' name=\"description\" cols=80 rows=20>".$res[0]['description']."</textarea>";
                  echo "</td></tr>";
                  echo "<tr><td colspan=\"2\" align=\"right\">";
                  echo "<input type=\"submit\" name=\"do_modify\" value=\"Create Cave\">";
