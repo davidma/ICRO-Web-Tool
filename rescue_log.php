@@ -11,8 +11,13 @@
      // Get and check the rescue data for this ID
      if (isset($_GET['id']))
      {
+             // cheack if rescue is active
+             $res = $theDB->fetchQuery("select status from rescues where rescue_id = ".$_GET['id']);
+
+             $status = ($res) ? $res[0]['status'] : 0;
+
 	     //display the form to add new entries, if you are a warden or callout officer
-		 if ($theSentry->hasPermission(2) || $theSentry->hasPermission(8))
+		 if ($status && ($theSentry->hasPermission(2) || $theSentry->hasPermission(8)))
 		 {
 		     $currdatetime = date('Y-m-d H:i:s');
 		 

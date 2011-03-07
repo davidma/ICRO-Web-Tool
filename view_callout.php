@@ -81,7 +81,10 @@
      echo "<div class='fullboxheader'><a href='#' id='optionstg' onclick=\"toggleDiv('options','optionstg');\"/>[-]</a> <b>Incident Options</b></div>";
      echo "<div class='fullbox' id='options'>";
      echo "<ul>";
-     echo "<li><a href='modify_details.php?id=".$_GET['id']."'>Modify main callout details</a></li>";
+     if ($rescue[0]['status'] == 1)
+     {
+         echo "<li><a href='modify_details.php?id=".$_GET['id']."'>Modify main callout details</a></li>";
+     }
      echo "<li><a href='rescue_log.php?id=".$_GET['id']."'>View / Update the main rescue log</a></li>";
      echo "<li><a href='cave.php?cave_id=".$rescue[0]['cave_id']."'>Get more information about the Cave</a></li>";
 
@@ -94,14 +97,16 @@
      echo "</div>";
      echo "<br/>";
 
-     echo "<div class='fullboxheader'><a href='#' id='mgtstg' onclick=\"toggleDiv('mgt','mgtstg');\"/>[-]</a> <b>Personnel Management</b></div>";
-     echo "<div class='fullbox' id='mgt'>";
-     echo "<ul>";
-     echo "<li><a href='show_cavers.php?id=".$_GET['id']."'>View the list of cavers involved in this rescue</a></li>";
-     echo "<li><a href='target_search.php?RID=".$_GET['id']."'>Find ICRO Members to assist in this callout</a>";
-     echo "</ul>";
-     echo "</div>";
-
+     if ($rescue[0]['status'] == 1)
+     {
+         echo "<div class='fullboxheader'><a href='#' id='mgtstg' onclick=\"toggleDiv('mgt','mgtstg');\"/>[-]</a> <b>Personnel Management</b></div>";
+         echo "<div class='fullbox' id='mgt'>";
+         echo "<ul>";
+         echo "<li><a href='show_cavers.php?id=".$_GET['id']."'>View the list of cavers involved in this rescue</a></li>";
+         echo "<li><a href='target_search.php?RID=".$_GET['id']."'>Find ICRO Members to assist in this callout</a>";
+         echo "</ul>";
+         echo "</div>";
+     }
  }
  else
  {

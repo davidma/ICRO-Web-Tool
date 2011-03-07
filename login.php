@@ -7,8 +7,7 @@
 
  if(isset($_SESSION['username'])) 
  {
-    echo 'You are already logged in, '.$_SESSION['username'].'.';
-    echo "<meta http-equiv=\"refresh\" content=\"0;index.php\">";
+    echo "You are already logged in - proceed to <a href='index.php'>Main Menu?</a>";
  }
 
  if (isset($_POST['submit']))
@@ -26,7 +25,7 @@
         else
         {
             $theLogger->log("User ".$_SESSION['username']." logged in");
-            echo "<meta http-equiv=\"refresh\" content=\"0;index.php\">";
+            echo "You are logged in - proceed to <a href='index.php'>Main Menu?</a>";
         }
     }
  } 

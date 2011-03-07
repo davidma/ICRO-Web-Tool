@@ -13,6 +13,30 @@
      {
          if ($theSentry->hasPermission(2) || $theSentry->hasPermission(8))
          {
+             $result = $theDB->fetchQuery("select * from users u, user_status us where us.user_id = u.user_id and us.rescue_id = ".$_GET['id']." order by last_name");
+
+             if(!$result)
+             {
+                 echo "No users attached to this rescue to alert...";
+             }
+             else
+             {
+                 for ($i=0; $i < count($result); $i++)
+                 {
+                     // Send an SMS to the user, alerting him rescue is over
+                     $res = $theSMS->send($result[$i]['mobile_phone'],"[ICRO] Rescue operation declared finished, you can now stand down. Your ICRO status has been reset to available");
+
+                     if ($res)
+                     {
+                         echo $result[$i]['first_name']." ".$result[$i]['last_name']." was sucessfully told to stand down via SMS<br/>";
+                     }
+                     else
+                     {
+                         echo $result[$i]['first_name']." ".$result[$i]['last_name']." was NOT told to stand down via SMS - please inform manually!<br/>";
+                     }
+                 }
+             }
+
              // Unlink all the users
              if ($theDB->doQuery("update user_status set status_id = 0, rescue_id = 0 where rescue_id = ".$_GET['id']))
              {
