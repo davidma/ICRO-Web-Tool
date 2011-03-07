@@ -27,13 +27,18 @@
              $url = "http://maps.google.com/maps/api/staticmap?center=".urlencode($address)."&zoom=14&size=415x440&maptype=hybrid&sensor=false";
 
              $data = file_get_contents($url);
-             file_put_contents("images/usermaps/".$result[$i]['user_id'].".png",$data);
+
+             $fh = fopen("images/usermaps/".$result[$i]['user_id'].".png", "wb");
+             fwrite($fh, $data);
+             fclose($fh);
+
+             ####file_put_contents("images/usermaps/".$result[$i]['user_id'].".png",$data);
 
              echo "Generated new map for ".$result[$i]['username']."<br/>";
 
              $url = "http://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($address)."&region=ie&sensor=false";
 
-             $data = json_decode(file_get_contents($url));
+             $data = $json->decode(file_get_contents($url));
              $lat  = $data->results[0]->geometry->location->lat;
              $lng  = $data->results[0]->geometry->location->lng;
            
@@ -65,4 +70,3 @@
 <?php
  require("template/footer.html");
 ?>
-

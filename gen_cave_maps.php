@@ -23,7 +23,12 @@
              $url = "http://maps.google.com/maps/api/staticmap?center=".urlencode($address)."&zoom=12&size=415x170&maptype=hybrid&sensor=false";
 
              $data = file_get_contents($url);
-             file_put_contents("images/cavemaps/".$result[$i]['cave_id'].".png",$data);
+             
+             $fh = fopen("images/cavemaps/".$result[$i]['cave_id'].".png", "wb");
+             fwrite($fh, $data);
+             fclose($fh);
+
+             ####file_put_contents("images/cavemaps/".$result[$i]['cave_id'].".png",$data);
 
              echo "Generated new map for ".$result[$i]['name']." (".$result[$i]['cave_id'].")<br/>";
 

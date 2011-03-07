@@ -6,6 +6,7 @@
  require_once("classes/SMS.php");
  require_once("classes/Mapper.php");
  require_once("classes/Logger.php");
+ require_once("classes/JSON.php");
 
  // These objects are now available for use on every page.... 
  $theSentry = new Sentry();
@@ -13,6 +14,7 @@
  $theLogger = new Logger($theDB);
  $theValidator = new Validator();
  $theSMS = new SMS();
+ $json = new Services_JSON();
 
  echo '<html>';
  echo '<head><title>ICRO - Irish Cave Rescue Organisation</title>';

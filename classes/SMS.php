@@ -48,14 +48,13 @@ class SMS
         $url=$this->baseurl."/http/sendmsg?user=".$this->userid."&password=".$this->password."&api_id=".$this->api_id."&from=".$this->fromnum."&to=".$to_num."&text=".urlencode($message);
 
         // Make the http call
-        #########$response = file($url);
+        $response = file($url);
 
         // Check to see if it worked
         $send = split(":",$response[0]);
 
         // Good respose is "ID:" followed by some alphanumeric messageid
-        ######if ($send[0] == "ID")
-        if (1==1)
+        if ($send[0] == "ID")
         {
             return true;
         }
