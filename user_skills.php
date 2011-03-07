@@ -19,8 +19,8 @@
          {
              $role_array = $_POST['roles'];
 
-             $theLogger->log("Clearing roles for user id ".$_POST['user_id']);
-             $theDB->doQuery("delete from user_roles where user_id = '".$_POST['user_id']."' and role_id < 100;");
+             $theLogger->log("Clearing skills for user id ".$_POST['user_id']);
+             $theDB->doQuery("delete from user_roles where user_id = '".$_POST['user_id']."' and role_id > 100;");
 
              for ($i=0; $i<count($role_array); $i++)
              {
@@ -29,11 +29,11 @@
                  if ($res)
                  {
                      $theLogger->log("Added role ".$role_array[$i]." for user id ".$_POST['user_id']);
-                     echo "Added role ".$role_array[$i]." for user <br/>";
+                     echo "Added skill ".$role_array[$i]." for user <br/>";
                  }
                  else
                  {
-                     echo "Failed to add role ".$role_array[$i]." for user ".$theDB->lasterror()."<br/>";
+                     echo "Failed to add skill ".$role_array[$i]." for user ".$theDB->lasterror()."<br/>";
                  }
              }
             
@@ -41,8 +41,8 @@
          }
          else if (isset($_POST['user_id']))
          {
-             echo "Select the roles you want the user to have:<br/><br/>";
-             echo "<form action='user_roles.php' method='post'>";
+             echo "Select the skills appropriate to this user:<br/><br/>";
+             echo "<form action='user_skills.php' method='post'>";
              echo "<input type='hidden' name='user_id' value='".$_POST['user_id']."'>";
 
              $result = $theDB->fetchQuery('select role_id from user_roles where user_id = '.$_POST['user_id']);
@@ -53,7 +53,7 @@
                  array_push($user_roles,$result[$i]['role_id']);
              }
 
-             $roles = $theDB->fetchQuery('select * from roles where role_id < 100;');
+             $roles = $theDB->fetchQuery('select * from roles where role_id > 100;');
              if (!$roles) { echo "No roles found"; die(); }
 
              for ($i=0; $i<count($roles); $i++)
@@ -70,13 +70,13 @@
                  echo "<br/>";
              }
 
-             echo "<br/><input type=submit value='Update Roles'>";
+             echo "<br/><input type=submit value='Update Skills'>";
              echo "</form>";
          }
          else
          {
              echo "Select a User to modify:<br/><br/>";
-             echo "<form action='user_roles.php' method='post'>";
+             echo "<form action='user_skills.php' method='post'>";
 
              $res = $theDB->fetchQuery("select user_id,first_name,last_name from users;");
 
@@ -97,7 +97,7 @@
                  echo "</select>";
              }
 
-             echo "<INPUT TYPE='submit' value='Modify User Roles'/>";
+             echo "<INPUT TYPE='submit' value='Modify User Skills'/>";
              echo "</form>";
          }
      }

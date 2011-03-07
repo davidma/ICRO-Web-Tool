@@ -51,7 +51,7 @@
         
          echo "<div id='clear_both' style='clear:both;'></div>";
        
-         echo "<div class='fullboxheader'><a href='#' id='optionstg' onclick=\"toggleDiv('options','optionstg');\"/>[-]</a> <b>Roles defined for this User</b></div>";
+         echo "<div class='fullboxheader'><a href='#' id='optionstg' onclick=\"toggleDiv('options','optionstg');\"/>[-]</a> <b>Roles & Skills defined for this User</b></div>";
          echo "<div class='fullbox' id='options'>";
          echo "<ul>";
 
