@@ -101,17 +101,39 @@
          echo "</div>";
      }
 
-     // Admin specific stuff
-     if ($theSentry->hasPermission(1))
+     // Personell stuff
+     if ($theSentry->hasPermission(2) || $theSentry->hasPermission(5) || $theSentry->hasPermission(8))
      {
-         echo "<div class='fullboxheader'><a href='#' id='dx' onclick=\"toggleDiv('d','dx');\"/>[-]</a> <b>Site Admin Tools</b></div>";
+         echo "<div class='fullboxheader'><a href='#' id='dx' onclick=\"toggleDiv('d','dx');\"/>[-]</a> <b>User Admin Tools</b></div>";
          echo "<div class='fullbox' id='d'>";
          echo "<ul>";
-         echo "<li><a href='dump_db.php'>Dump DB (for backup or offline use)</a><br/></li>";
          echo "<li><a href='quick_add.php'>Quickly Add a Basic User</a><br/></li>";
          echo "<li><a href='user_add.php'>Add</a>&nbsp;/&nbsp;<a href='user_mod.php'>Modify</a>&nbsp;/&nbsp;<a href='user_del.php'>Delete</a> a User<br/></li>";
          echo "<li><a href='reset_password.php'>Reset</a> a users password</a></li>";
          echo "<li><a href='user_roles.php'>Change a users roles</a> / <a href='user_skills.php'>Change a users skills</a></li>";
+         echo "</ul>";
+         echo "</div>";
+     }
+ 
+     // Training specific stuff
+     if ($theSentry->hasPermission(5))
+     {
+         echo "<div class='fullboxheader'><a href='#' id='fx' onclick=\"toggleDiv('f','fx');\"/>[-]</a> <b>Training Tools</b></div>";
+         echo "<div class='fullbox' id='f'>";
+         echo "<ul>";
+         echo "<li><a href='course_add.php'>Add Training Course</a><br/></li>";
+         echo "<li><a href='course_mod.php'>Modify an existing Training Course</a><br/></li>";
+         echo "</ul>";
+         echo "</div>";
+     }
+ 
+     // Admin specific stuff
+     if ($theSentry->hasPermission(1))
+     {
+         echo "<div class='fullboxheader'><a href='#' id='ex' onclick=\"toggleDiv('e','ex');\"/>[-]</a> <b>Site Admin Tools</b></div>";
+         echo "<div class='fullbox' id='e'>";
+         echo "<ul>";
+         echo "<li><a href='dump_db.php'>Dump DB (for backup or offline use)</a><br/></li>";
          echo "<li><a href='gen_user_maps.php'>Re-generate</a> all users maps, lats and longs</a></li>";
          echo "<li><a href='gen_cave_maps.php'>Re-generate</a> all cave maps</a></li>";
          echo "</ul>";
