@@ -174,7 +174,7 @@ body
 
 .halfboxheader
 {
-    width:           49%;
+    width:           99%;
     background:      #999999;
     color:           #eeeeee;
     border:          1px solid #999999;
@@ -184,7 +184,7 @@ body
 
 .halfbox
 {
-    width:           49%;
+    width:           99%;
     background:      #eeeeee;
     border:          1px solid #999999;
     margin:          0px 1px 1px 1px;
