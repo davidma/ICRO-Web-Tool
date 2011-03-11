@@ -123,6 +123,8 @@
          echo "<ul>";
          echo "<li><a href='course_add.php'>Add Training Course</a><br/></li>";
          echo "<li><a href='course_mod.php'>Modify an existing Training Course</a><br/></li>";
+         echo "<li><a href='link_user_course.php'>Record a users attendance at a Training Course</a><br/></li>";
+         echo "<li><a href='training_search.php'>Search Training Records</a><br/></li>";
          echo "</ul>";
          echo "</div>";
      }

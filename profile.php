@@ -65,6 +65,29 @@
          
          echo "</ul></div>";
 
+
+         echo "<div class='fullboxheader'><a href='#' id='tx' onclick=\"toggleDiv('t','tx');\"/>[-]</a> <b>Training Completed by this User</b></div>";
+         echo "<div class='fullbox' id='t'>";
+         echo "<ul>";
+
+         // Get the list of training
+         $roles = $theDB->fetchQuery('select tc.name,date_format(t.valid_from,"%Y-%m-%d") as stime,date_format(t.valid_to,"%Y-%m-%d") as etime, if(valid_to > now(),1,0) as valid from training_courses tc, training t where t.course_id = tc.course_id and t.user_id = '.$result[0]['user_id'].' order by t.valid_to desc');
+
+         for ($i = 0; $i < count($roles); $i++)
+         {
+             if ($roles[$i]['valid'])
+             {
+                 echo "<li>".$roles[$i]['stime']." - ACTIVE - ".$roles[$i]['name']." (valid until ".$roles[$i]['etime'].")</li>";
+             }
+             else
+             {
+                 echo "<li>".$roles[$i]['stime']." - EXPIRED - ".$roles[$i]['name']." (valid until ".$roles[$i]['etime'].")</li>";
+             }
+         }
+
+         echo "</ul></div>";
+
+
          echo "<div class='fullbox'><center>View <a href='user_list.php'>other users profiles</a> or <a href='edit_profile.php?user_id=".$_SESSION['user_id']."'>edit your own?</a></center></div>";
      }
  }

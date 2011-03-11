@@ -7,6 +7,7 @@
  require_once("classes/Mapper.php");
  require_once("classes/Logger.php");
  require_once("classes/JSON.php");
+ require_once('calendar/classes/tc_calendar.php');
 
  // These objects are now available for use on every page.... 
  $theSentry = new Sentry();
@@ -23,6 +24,7 @@
 
  // The ICRO Ajax Library
  echo "<script type='text/javascript' src='scripts/icro_ajax.js'></script>";
+ echo "<script type='text/javascript' src='calendar/calendar.js'></script>";
 
  echo '</head><body><div class="mainframe">';
  echo "<div class='dateheader'>".date('l jS \of F Y')."</div>";
