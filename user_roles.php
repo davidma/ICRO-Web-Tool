@@ -78,7 +78,7 @@
              echo "Select a User to modify:<br/><br/>";
              echo "<form action='user_roles.php' method='post'>";
 
-             $res = $theDB->fetchQuery("select user_id,first_name,last_name from users;");
+             $res = $theDB->fetchQuery("select user_id,first_name,last_name from users order by last_name;");
 
              if (!$res)
              {

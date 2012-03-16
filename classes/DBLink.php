@@ -23,7 +23,7 @@ class DBLink
     function DBLink()
     {
         // Connection details for the DB
-        require('/var/www/html/icro/config/config.php');
+        require('/var/www/html/ICRO-Web-Tool/config/config.php');
   
         // Initialise the error record
         $this->last_error = 'No Error';

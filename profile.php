@@ -3,7 +3,7 @@
 ?>
 
 <div class='newsbox'>
-<div class='newstitle'>My Profile</div>
+<div class='newstitle'>User Profile</div>
 <div class='newscontent'>
 
 <?php

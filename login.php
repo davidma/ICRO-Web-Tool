@@ -1,13 +1,21 @@
-<?php    
+<?php  
+
  require("template/header.php");
 
  echo "<div class='newsbox'>";
  echo "<div class='newstitle'>Login to the System</div>";
  echo "<div class='newscontent'>";
-
+ 
  if(isset($_SESSION['username'])) 
  {
-    echo "You are already logged in - proceed to <a href='index.php'>Main Menu?</a>";
+    if(isset($_SESSION['login_retval'])) 
+    {
+        echo 'You are logged in, '.$_SESSION['username'].' - continue to the <a href="'.$_SESSION['login_retval'].'">page you were looking for</a> or go to <a href="index.php">the main menu?</a><br/>';
+    } 
+    else
+    {
+        echo 'You are logged in, '.$_SESSION['username'].' - go to <a href="index.php">the main menu?</a><br/>';
+    }
  }
 
  if (isset($_POST['submit']))
@@ -25,7 +33,15 @@
         else
         {
             $theLogger->log("User ".$_SESSION['username']." logged in");
-            echo "You are logged in - proceed to <a href='index.php'>Main Menu?</a>";
+
+            if(isset($_SESSION['login_retval'])) 
+            {
+                echo 'You are logged in, '.$_SESSION['username'].' - continue to the <a href="'.$_SESSION['login_retval'].'">page you were looking for</a> or go to <a href="index.php">the main menu?</a><br/>';
+            } 
+            else
+            {
+                echo 'You are logged in, '.$_SESSION['username'].' - go to <a href="index.php">the main menu?</a><br/>';
+            }
         }
     }
  } 

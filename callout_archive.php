@@ -24,7 +24,7 @@
 
          for ($i=0; $i < count($result); $i++)
          {
-             $type = ($rescue[0]['type'] == 1) ? 'Rescue' : 'Rescue Practice';             
+             $type = ($result[$i]['type'] == 1) ? 'Rescue' : 'Rescue Practice';             
              echo '<tr>';
              echo '<td width=40%><a href="view_callout.php?id='.$result[$i]['rescue_id'].'">'.$result[$i]['name'].', '.$result[$i]['county'].'</a></td>';
              echo "<td width=30%>$type</td>";

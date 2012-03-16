@@ -18,7 +18,7 @@ class SMS
     function SMS()
     {
         // Connection details for the Clickatell account
-        require('/var/www/html/icro/config/config.php');
+        require('/var/www/html/ICRO-Web-Tool/config/config.php');
   
         // Initialise the login details
         $this->userid   = $SMS_USERID;

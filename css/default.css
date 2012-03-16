@@ -146,6 +146,14 @@ body
     padding:         2px 2px 2px 2px;
 }
 
+.motdbanner
+{
+    width:           99%;
+    border:          1px solid #999999;
+    margin:          1px 1px 1px 1px;
+    padding:         2px 2px 2px 2px;
+}
+
 .fullboxheader
 {
     width:           99%;
@@ -193,7 +201,7 @@ body
 
 .lmenubox
 {
-    width:           49%;
+    width:           47%;
     float:           left;
     background:      #eeeeee;
     border:          1px solid #999999;
@@ -203,7 +211,7 @@ body
 
 .rmenubox
 {
-    width:           48%;
+    width:           47%;
     float:           right;
     background:      #eeeeee;
     border:          1px dashed #666666;

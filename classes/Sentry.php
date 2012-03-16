@@ -21,7 +21,7 @@ class Sentry
         header("Cache-control: private"); 
 		
 		// Set a session variable to tell other pages if the site is connected to the net or not
-		require('/var/www/html/icro/config/config.php');
+		require('/var/www/html/ICRO-Web-Tool/config/config.php');
 		
 		if ($OFFLINE_SITE)
 		{

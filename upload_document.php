@@ -31,12 +31,31 @@
              }
  
              $query = "INSERT INTO documents (title, name, size, type, content ) VALUES ('$title', '$fileName', '$fileSize', '$fileType', '$content')";
-
              $res = $theDB->doQuery($query);
  
              if ($res)
              {
                  echo "File $fileName uploaded<br>";
+
+                 $res = $theDB->fetchQuery("select doc_id from documents where name = '$fileName' limit 1");
+
+                 if (!$res)
+                 {
+                     echo "No doc_id found - ".$theDB->lasterror()."<br>";
+                     die();
+                 }
+                 else
+                 {
+                     print_r($res[0]);
+
+                     echo $res[0]['doc_id']."<br/>";
+
+                     // Default category is 1 - unclassified
+                     $query = "INSERT INTO category_docs (doc_id, category_id ) VALUES ('".$res[0]['doc_id']."', '1')";
+                     $theDB->doQuery($query);
+
+                     echo "Would you like to <a href='categorise_docs.php?doc_id=".$res[0]['doc_id']."'>categorise</a> this document or return to the <a href='index.php'>main menu</a>?<br/>";
+                 }
              }
              else
              {
@@ -79,4 +98,3 @@
 <?php
  require("template/footer.html");
 ?>
-

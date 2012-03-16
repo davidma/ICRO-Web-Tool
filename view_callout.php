@@ -43,9 +43,26 @@
 
      // Rescue details go here - editable if you have permissions
      echo "<div class='fullboxheader'><a href='#' id='detailstg' onclick=\"toggleDiv('details','detailstg');\"/>[-]</a> <b>Incident Details</b></div>";
-     echo "<div class='fullbox' id='details'><pre>";
-     echo $rescue[0]['comments'];
-     echo "</pre></div>";
+     echo "<div class='fullbox' id='details'>";
+
+     $description = $rescue[0]['comments'];
+
+     $description = str_replace("\n",'<br/>',$description);
+     $description = str_replace('[b]','<b>',$description);
+     $description = str_replace('[/b]','</b>',$description);
+     $description = str_replace('[u]','<u>',$description);
+     $description = str_replace('[/u]','</u>',$description);
+     $description = str_replace('[i]','<i>',$description);
+     $description = str_replace('[/i]','</i>',$description);
+     $description = str_replace('[red]','<font color="red">',$description);
+     $description = str_replace('[/red]','</font>',$description);
+     $description = str_replace('[green]','<font color="green">',$description);
+     $description = str_replace('[/green]','</font>',$description);
+     $description = str_replace('[blue]','<font color="blue">',$description);
+     $description = str_replace('[/blue]','</font>',$description);
+
+     echo $description;
+     echo "</div>";
      echo "<br/>";
 
      // Display last 5 log entries
@@ -77,6 +94,38 @@
      echo "</div>";
      echo "<br/>";
 
+     echo "<div class='fullboxheader'><b>Linked Documents</b></div>";
+     echo "<div class='fullbox'>";
+
+     $result = $theDB->fetchQuery("select d.doc_id,d.name,d.title,d.type,d.size from documents d, rescue_docs rd where rd.rescue_id = ".$_GET['id']." and rd.doc_id = d.doc_id order by doc_id");
+
+     if(!$result)
+     {
+          echo "No linked documents";
+     }
+     else
+     {
+          echo '<center><table border=1 width=95%>';
+          echo '<tr bgcolor=grey>';
+          echo '<td width=40%>Title</td><td width=20%>Filename</td><td width=20%>Type</td><td width=20%>Size</td>';
+          echo '</tr>';
+
+          for ($i=0; $i < count($result); $i++)
+          {
+              echo '<tr>';
+              echo '<td width=40%><a href="get_document.php?doc_id='.$result[$i]['doc_id'].'">'.$result[$i]['title'].'</a></td>';
+              echo '<td width=20%>'.$result[$i]['name'].'</td>';
+              echo '<td width=20%>'.$result[$i]['type'].'</td>';
+              echo '<td width=20%>'.$result[$i]['size'].'</td>';
+              echo '</tr>';
+
+          }
+          echo '</table></center>';
+     }
+
+     echo "</div>";
+     echo "<br/>";
+
      // List of links which may be used in the rescue
      echo "<div class='fullboxheader'><a href='#' id='optionstg' onclick=\"toggleDiv('options','optionstg');\"/>[-]</a> <b>Incident Options</b></div>";
      echo "<div class='fullbox' id='options'>";
@@ -88,7 +137,7 @@
      echo "<li><a href='rescue_log.php?id=".$_GET['id']."'>View / Update the main rescue log</a></li>";
      echo "<li><a href='cave.php?cave_id=".$rescue[0]['cave_id']."'>Get more information about the Cave</a></li>";
 
-     if ($rescue[0]['status'] == 1)
+     if ($rescue[0]['status'] == 1 && ($theSentry->hasPermission(2) || $theSentry->hasPermission(8)))
      {
          echo "<li><a href='end_rescue.php?id=".$_GET['id']."'>End the rescue</a></li>";
      }
@@ -121,4 +170,3 @@
 <?php
  require("template/footer.html");
 ?>
-

@@ -73,7 +73,7 @@
              if ($res)
              {
                  $theDB->doQuery("INSERT into rescue_log set rescue_id = $rid ,time=now(),message='$name has accepted callout'");
-                 $theSMS->send($from,"[ICRO] You are called out - proceed to Rescue Store - reply ONTHEWAY with estimated travel time in mins when leaving e.g. ONTHEWAY 120");
+                 $theSMS->send($from,"[ICRO] You are called out - please report to the Rescue Store - reply ONTHEWAY with estimated travel time in mins when leaving e.g. ONTHEWAY 120");
                  echo "User $name ($from) marked on callout";
              }
              else

@@ -46,7 +46,9 @@ if (isset($_POST['submit']))
                                        first_name,
 				       last_name, 
                                        password, 
+                                       email,
                                        active,
+                                       county,
                                        lat,
                                        lng,
                                        regdate, 
@@ -56,7 +58,9 @@ if (isset($_POST['submit']))
                                        '".addslashes($_POST['fname'])."',
 				       '".addslashes($_POST['lname'])."', 
                                        '".$password."', 
+				       '".addslashes($_POST['email'])."', 
                                        1,
+                                       'Dublin',
                                        53.1265,
                                        -6.75655,
                                        '$regdate', 
@@ -118,6 +122,9 @@ else
 </td></tr>
 <tr><td>Mobile Contact Number:*</td><td>
 <input type="text" name="mobile" maxlength="100">
+</td></tr>
+<tr><td>Email Address (if known):</td><td>
+<input type="text" name="email" maxlength="100">
 </td></tr>
 <tr><td colspan="2" align="right">
 <input type="submit" name="submit" value="Create User">

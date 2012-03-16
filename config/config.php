@@ -29,6 +29,6 @@ $SMS_FROMNUM  = '';
 $OFFLINE_SITE=false;
 
 // Google Maps API Key
-$MAPS_API_KEY = 'ABQIAAAAbnBxNRuqK_xq-3RWSAcTuhSYIHjq4wXVg1q_VOeO8u4GoSRl4hTYHp4V2aSR0o2-me1C0eix_E0DJQ';
+$MAPS_API_KEY = 'Go get a key';
 
 ?>

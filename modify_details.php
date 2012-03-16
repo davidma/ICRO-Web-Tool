@@ -50,8 +50,17 @@
      else
      {
          echo "<form target='modify_details.php' method=post>";
+
          echo "Current details:<br/>";
-         echo "<textarea cols=80 rows=10 name='details'>".$rescue[0]['comments']."</textarea><br/><br/>";
+         echo "<input type='button' value='Bold' onclick='formatText(\"ta1\",\"b\");'/>";
+         echo "<input type='button' value='Underline' onclick='formatText(\"ta1\",\"u\");'/>";
+         echo "<input type='button' value='Italic' onclick='formatText(\"ta1\",\"i\");'/>";
+         echo "<input type='button' value='Red' onclick='formatText(\"ta1\",\"red\");'/>";
+         echo "<input type='button' value='Green' onclick='formatText(\"ta1\",\"green\");'/>";
+         echo "<input type='button' value='Blue' onclick='formatText(\"ta1\",\"blue\");'/>";
+         echo "<br/>";
+         echo "<textarea id='ta1' name=\"details\" cols=80 rows=20>".$rescue[0]['comments']."</textarea>";
+         echo "<br/>";
          echo "<input type=hidden name='id' value='".$_GET['id']."'/>";
          echo "<input type=submit value='Save New Details'/>";
          echo "</form>";

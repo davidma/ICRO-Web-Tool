@@ -42,6 +42,8 @@
              $description = str_replace('[/b]','</b>',$description);
              $description = str_replace('[u]','<u>',$description);
              $description = str_replace('[/u]','</u>',$description);
+             $description = str_replace('[i]','<i>',$description);
+             $description = str_replace('[/i]','</i>',$description);
              $description = str_replace('[red]','<font color="red">',$description);
              $description = str_replace('[/red]','</font>',$description);
              $description = str_replace('[green]','<font color="green">',$description);

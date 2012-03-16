@@ -48,7 +48,7 @@
 
                  for ($i=0; $i<count($res); $i++)
                  {
-                     echo "<option value='".$res[$i]['doc_id']."'>".$res[$i]['title']." - ".$res[$i]['name']."</option>";
+                     echo "<option value='".$res[$i]['doc_id']."'>".$res[$i]['title']."</option>";
                  }
 
                  echo "</select>";

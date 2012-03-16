@@ -37,7 +37,7 @@
            $theDB->doQuery("INSERT into rescue_log set rescue_id = ".$ID[0]['rescue_id'].",TIME=now(),MESSAGE='Callout started by ".$_SESSION['username']."';");
              
            // Alert all the wardens and the PRO
-           $data = $theDB->fetchQuery("SELECT u.* FROM users u, user_roles r WHERE u.user_id = r.user_id AND r.role_id in (1)");
+           $data = $theDB->fetchQuery("SELECT u.* FROM users u, user_roles r WHERE u.user_id = r.user_id AND r.role_id in (2,8,9)");
               
            if ($_POST['dosms'] == 1)
            {
@@ -46,7 +46,7 @@
                // Send an SMS, ask to put on standby
                if ($_POST['type'] == '2')
                {
-                 $message = "[ICRO] Rescue PRACTICE commencing at ".$cave_data[0]['name'].", ".$cave_data[0]['county']." - please reply ABLE if you are attending";
+                 $message = "[ICRO] Rescue PRACTICE commencing at ".$cave_data[0]['name'].", ".$cave_data[0]['county']." - please reply ABLE if you are attending, or OFFLINE if you are unavailable";
                  $state = 4;
                  $status = "Callout requested";
                }
@@ -114,7 +114,7 @@
        echo "<INPUT TYPE='RADIO' NAME='type' VALUE='1' > Real Rescue<br/>";
        echo "<INPUT TYPE='RADIO' NAME='type' VALUE='2' CHECKED> Rescue Practice";
        echo "<br/><br/>";
-       echo "Alert Wardens/PRO Immediately by SMS?<br/>";
+       echo "Alert Wardens/PRO Immediately by SMS (straight to callout - no standby)?<br/>";
        echo "<INPUT TYPE='RADIO' NAME='dosms' VALUE='1'> Yes<br/>";
        echo "<INPUT TYPE='RADIO' NAME='dosms' VALUE='0' CHECKED> No";
        echo "<br/><br/>";

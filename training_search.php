@@ -17,7 +17,7 @@
          echo "<option value='1' selected> currently valid</option>";
          echo "<option value='0'>all</option>";
          echo "</select> ";
-         echo " training events for<br/>users in ";
+         echo " training events for users in ";
          echo "<select name='group'>";
          echo "<option value='2'>Wardens</option>";
          echo "<option value='3'>Core Team</option>";
@@ -77,15 +77,15 @@
                  echo "<div class='fullbox'>";
                  echo "<table width=100% style='border:1px solid #999999'>";
  
-                 echo "<tr><td width=40%><b>Name</b></td><td width=30%><b>Course</b></td><td width=15%><b>Date Attended</b></td><td width=15%><b>Valid Until</b></td></tr>";
+                 echo "<tr><td width=30%><b>Name</b></td><td width=40%><b>Course</b></td><td width=15%><b>Date Attended</b></td><td width=15%><b>Valid Until</b></td></tr>";
 
                  $user_string="";
                  
                  for ($i=0; $i<count($userlist); $i++)
                  {
                      echo "<tr>";
-                     echo "<td style='border:1px solid #999999' width=40%>".$userlist[$i]['first_name']." ".$userlist[$i]['last_name']."</td>"; 
-                     echo "<td style='border:1px solid #999999' width=30%>".$userlist[$i]['name']."</td>"; 
+                     echo "<td style='border:1px solid #999999' width=30%>".$userlist[$i]['first_name']." ".$userlist[$i]['last_name']."</td>"; 
+                     echo "<td style='border:1px solid #999999' width=40%>".$userlist[$i]['name']."</td>"; 
                      echo "<td style='border:1px solid #999999' width=15%>".$userlist[$i]['valid_from']."</td>"; 
    
                      if ($userlist[$i]['valid'])

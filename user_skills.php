@@ -3,7 +3,7 @@
  // Start the page
  require("template/header.php");
  echo "<div class='newsbox'>";
- echo "<div class='newstitle'>Update User Roles</div>";
+ echo "<div class='newstitle'>Update User Skills</div>";
  echo "<div class='newscontent'>";
 
  // If its a non-logged in user, display public text
@@ -78,7 +78,7 @@
              echo "Select a User to modify:<br/><br/>";
              echo "<form action='user_skills.php' method='post'>";
 
-             $res = $theDB->fetchQuery("select user_id,first_name,last_name from users;");
+             $res = $theDB->fetchQuery("select user_id,first_name,last_name from users order by last_name;");
 
              if (!$res)
              {

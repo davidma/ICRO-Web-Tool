@@ -85,7 +85,9 @@
              $cave_lng = $cave_data[0]['lng'];
 
              $sqlstring = "select DISTINCT u.lat, u.lng, CONCAT(u.first_name,' ',u.last_name) as dsc, u.mobile_phone, u.user_id, ROUND(((ACOS(SIN(".$cave_lat." * PI() / 180) * SIN(u.lat * PI() / 180) + COS(".$cave_lat."* PI() / 180) * COS(u.lat * PI() / 180) * COS((".$cave_lng." - u.lng) * PI() / 180)) * 180 / PI()) * 60 * 1.1515),3) AS distance from users u, user_roles r where u.user_id = r.user_id and u.user_id in (select u.user_id from users u, user_roles r, user_status s where u.user_id = r.user_id and u.user_id = s.user_id and s.status_id = 0 and r.role_id = ".$_GET['group'].") $role_sql HAVING distance < ".$_GET['distance']." ORDER BY distance limit " . $_GET['num'];
-     
+    
+             echo $sqlstring;
+ 
              $userlist = $theDB->fetchQuery($sqlstring);
 
              if(!$userlist)

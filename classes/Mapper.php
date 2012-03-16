@@ -18,7 +18,7 @@ class Mapper
     function Mapper()
     {
         // Need Google Maps API Key
-        require('/var/www/html/icro/config/config.php');
+        require('/var/www/html/ICRO-Web-Tool/config/config.php');
   
         // Initialise the login details
         $this->api_id   = $MAPS_API_KEY;
