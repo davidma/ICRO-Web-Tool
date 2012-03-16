@@ -46,6 +46,8 @@
  if (isset($_SESSION['username']))
  {
      echo '&nbsp;~&nbsp;<a href="profile.php">My Profile</a>';
+     echo '&nbsp;~&nbsp;<a href="http://www.wunderground.com/cgi-bin/findweather/getForecast?query=52.70194626,-8.92472267" target="_blank">Clare Weather</a>';
+     echo '&nbsp;~&nbsp;<a href="http://www.wunderground.com/cgi-bin/findweather/getForecast?query=54.418%2C-7.822&sp=IFERMANA2" target="_blank">Fermanagh Weather</a>';
      echo '&nbsp;~&nbsp;<a href="gen_calloutlist.php">Callout List</a>';
  }
 
