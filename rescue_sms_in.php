@@ -15,6 +15,7 @@
      if (!$id_data)
      {
          $theSMS->send($_GET['from'],"[ICRO] ERROR - Unrecognised Number - you must use a number associated with your profile");
+         $theLogger->log("SMS error - unrecognised number - ".$theDB->lastError());
          die("ERROR - unrecognised number - ".$theDB->lastError());
      }
 
@@ -23,7 +24,8 @@
 
      if (!$state_data)
      {
-         $theSMS->send($_GET['from'],"[ICRO] ERROR - Internal error - ring Dave Masterson +353879648274");
+         $theSMS->send($_GET['from'],"[ICRO] ERROR - Internal error - contact admin");
+         $theLogger->log("SMS error - no state data found - ".$theDB->lastError());
          die("Error - no state data found - ".$theDB->lastError());
      }
      else
@@ -34,7 +36,7 @@
      $name  = $id_data[0]['first_name']." ".$id_data[0]['last_name'];
      $rid   = $state_data[0]['rescue_id'];
      $uid   = $id_data[0]['user_id'];
-     $error = "Internal error - ring Dave Masterson +353879648274"; 
+     $error = "Internal error - contact admin"; 
      $from  = $_GET['from']; 
    
     // Parse the message for valid commands
@@ -181,17 +183,12 @@
         // Process OK command - reply to standard sms test
         $theSMS->send($from,"[ICRO] Reply noted - system working - many thanks for testing!");
 
-        echo "OK reply recieved from $name ($from) at ".date("Y-m-d H:i:s")."<br/>";
-
-        // write result to file
-        $fh = fopen("sms_reply_file.txt", 'a') or die("can't open file");
-        fwrite($fh, " ** OK reply recieved from $name ($from) at ".date("Y-m-d H:i:s")."\n");
-        fclose($fh);
+        $theLogger->log("SMS Test - OK reply recieved from $name ($from)");
     }
     else
     {
         // Unrecognised command
-        $theSMS->send($from,"[ICRO] ERROR - sorry, I do not recognise your command - check the usage guide on the ICRO website");
+        $theSMS->send($from,"[ICRO] ERROR - sorry, I do not recognise your command - check the usage guide at ICRO.ie");
         echo "ERROR - Invalid command";
     }
  }
@@ -207,5 +204,3 @@
  echo "</div></div>";
  require("template/footer.html");
 ?>
-
-
