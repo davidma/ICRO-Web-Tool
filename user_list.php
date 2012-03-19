@@ -32,6 +32,8 @@
 
          }
          echo '</table></center>';
+ 
+         $theLogger->log("Generated full user list"); 
      }
  }
  else

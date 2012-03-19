@@ -34,6 +34,8 @@
 
              sleep(1);
          }
+        
+         $theLogger->log("Generated new maps for all caves");
      }
  }
  else

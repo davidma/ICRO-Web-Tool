@@ -27,6 +27,7 @@
      }
      else
      {
+         $theLogger->log("Viewing profile for user ".$result[0]['username']);
 
          // Pretty up the address
          $address = $result[0]['address_line1'].", ".$result[0]['address_line2'].", ".$result[0]['town'].", ".$result[0]['county'].", ".$result[0]['postcode'];

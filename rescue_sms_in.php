@@ -7,6 +7,8 @@
 
  if (isset($_GET['from']) && isset($_GET['text']))
  {
+     $theLogger->log("Received SMS ".$_GET['text']." from ".$_GET['from']);
+
      // Get the userid based on the number - search all 4 fields
      $id_data = $theDB->fetchQuery("SELECT * FROM users WHERE (mobile_phone = '".$_GET['from']."' OR home_phone = '".$_GET['from']."' OR work_phone = '".$_GET['from']."' OR other_phone = '".$_GET['from']."');");
      

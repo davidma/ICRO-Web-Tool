@@ -44,17 +44,19 @@
 
                              if (!result)
                              {
+                                 $theLogger->log("Password changed failed - DB Error - ".$theDB->lasterror());
                                  print 'Error updating password in DB - '.$theDB->lasterror().' - <a href="change_password.php">try again?</a>';
                              }
                              else
                              {
-                                 $theLogger->log("Password manually changed for user ".$_SESSION['username']);
+                                 $theLogger->log("Password manually changed");
                                  echo '<br/>Password details successfully updated<br/><br/>';
                              }
                         }
                         else
                         {
-                             echo 'Current Password does not match records - <a href="change_password">try again?</a>';
+                             $theLogger->log("Password changed failed - incorrect old password");
+                             echo 'Current Password does not match records - <a href="change_password.php">try again?</a>';
                         }
                     }
                }

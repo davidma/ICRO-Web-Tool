@@ -55,6 +55,8 @@
 
              sleep(1);
          }
+
+          $theLogger->log("Ganerated new maps/coords for all users");
      }
  }
  else

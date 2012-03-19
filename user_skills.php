@@ -28,7 +28,7 @@
   
                  if ($res)
                  {
-                     $theLogger->log("Added role ".$role_array[$i]." for user id ".$_POST['user_id']);
+                     $theLogger->log("Added skill ".$role_array[$i]." for user id ".$_POST['user_id']);
                      echo "Added skill ".$role_array[$i]." for user <br/>";
                  }
                  else

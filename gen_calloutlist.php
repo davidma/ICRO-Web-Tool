@@ -40,7 +40,7 @@
 
  if ($theSentry->login() && $theSentry->hasPermission(4))
  {
-     $theLogger->log("Callout list requested by user ".$_SESSION['username']);
+     $theLogger->log("Callout list requested");
      
      // Start the PDF file
      $p = new myPDF('L', 'mm', 'A4');

@@ -33,7 +33,10 @@ class Logger
     function log($data) 
     {
         $data = addslashes($data);
-        $res = $this->db_object->doQuery("insert into system_log (time, user_id, message) values (NOW(), '".$_SESSION['user_id']."', '$data');");
+
+        $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 1 ;
+
+        $res = $this->db_object->doQuery("insert into system_log (time, user_id, message) values (NOW(), '$user_id', '$data');");
 
         if (!$res)
         {

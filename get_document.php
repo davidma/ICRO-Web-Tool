@@ -3,12 +3,16 @@ if(isset($_GET['doc_id']))
 {
   include 'classes/DBLink.php';
   include 'classes/Sentry.php';
+  include 'classes/Logger.php';
 
   $theSentry = new Sentry();
 
   if ($theSentry->login())
   {
     $theDB = new DBLink();
+    $theLogger = new Logger($theDB);
+
+    $theLogger->log("Document (doc_id: ".$_GET['doc_id'].") requested");
 
     $query = "SELECT name, type, size, content FROM documents WHERE doc_id = '".$_GET['doc_id']."'";
     $res = $theDB->fetchQuery($query);
@@ -20,6 +24,8 @@ if(isset($_GET['doc_id']))
       $type    = $res[0]['type'];
       $content = $res[0]['content'];
 
+      $theLogger->log("Document (doc_id: ".$_GET['doc_id'].", name: $name) sucessfully delivered");
+
       header("Content-length: $size");
       header("Content-type: $type");
       header("Content-Disposition: attachment; filename=$name");
@@ -29,7 +35,8 @@ if(isset($_GET['doc_id']))
     }
     else
     {
-      echo "Document retieval failed - ".$theDB->lasterror()."<br/>";
+      $theLogger->log("Document retrieval failed - ".$theDB->lasterror());
+      echo "Document retrieval failed - ".$theDB->lasterror()."<br/>";
     }
   }
   else

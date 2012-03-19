@@ -35,6 +35,8 @@
  
              if ($res)
              {
+                 $theLogger->log("Uploaded file - $title ($fileName, $fileSize)");
+
                  echo "File $fileName uploaded<br>";
 
                  $res = $theDB->fetchQuery("select doc_id from documents where name = '$fileName' limit 1");
@@ -54,11 +56,14 @@
                      $query = "INSERT INTO category_docs (doc_id, category_id ) VALUES ('".$res[0]['doc_id']."', '1')";
                      $theDB->doQuery($query);
 
+                     $theLogger->log("Document ".$res[0]['doc_id']." assigned default category of 1 (unclassified)");
+
                      echo "Would you like to <a href='categorise_docs.php?doc_id=".$res[0]['doc_id']."'>categorise</a> this document or return to the <a href='index.php'>main menu</a>?<br/>";
                  }
              }
              else
              {
+                 $theLogger->log("File $fileName upload failed - ".$theDB->lasterror());
                  echo "File $fileName upload failed - ".$theDB->lasterror()."<br>"; 
              }
          }

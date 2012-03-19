@@ -150,6 +150,7 @@
          echo "<li><a href='mass_sms.php'>SMS the entire userbase with any message you want</a><br/></li>";
          echo "<li><a href='gen_user_maps.php'>Re-generate</a> all users maps, lats and longs</a></li>";
          echo "<li><a href='gen_cave_maps.php'>Re-generate</a> all cave maps</a></li>";
+         echo "<li><a href='system_log.php'>View System Logs</a></li>";
          echo "</ul>";
          echo "</div>";
      }
